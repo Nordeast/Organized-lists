@@ -10,9 +10,7 @@ public class main {
 
 	public static void main(String[] args) {
 		ArrayList<List_node> generated_list = new ArrayList<List_node>();
-		ArrayList<List_node> generated_list1 = new ArrayList<List_node>();
-		ArrayList<List_node> generated_list2 = new ArrayList<List_node>();
-		ArrayList<List_node> generated_list3 = new ArrayList<List_node>();
+
 
 		String[] rest = {"Cincinati vs. Hampton", "Harvard vs. Wisconsin", "Oregon vs. Butler", "West Virginia vs. Texas", "Butler vs. Butler", "West Virginia vs. Arkansas", "Notre Dame vs. Notre Dame", "Cincinati vs. Texas", "Northeastern vs. Northeastern", "Kentucky vs. Texas", "Cincinati vs. Kentucky", "Purdue vs. Arkansas", "Arkansas vs. Cincinati", "Notre Dame vs. Buffalo", "Texas vs. Oregon", "Hampton vs. Hampton", "Hampton vs. Buffalo", "Purdue vs. Butler", "Arkansas vs. West Virginia", "Northeastern vs. Arkansas", "Butler vs. Hampton", "Northeastern vs. Cincinati", "Wisconsin vs. Texas", "Purdue vs. West Virginia", "West Virginia vs. Notre Dame", "Purdue vs. Notre Dame", "Butler vs. Texas", "West Virginia vs. Buffalo", "Hampton vs. Wisconsin", "Texas vs. Butler", "Butler vs. Purdue", "Oregon vs. Northeastern", "Northeastern vs. Texas", "Arkansas vs. Northeastern", "Notre Dame vs. Northeastern", "Buffalo vs. Hampton", "Texas vs. Wisconsin", "Harvard vs. Cincinati", "Harvard vs. Hampton", "Hampton vs. Butler", "Northeastern vs. Kentucky", "Wisconsin vs. Cincinati", "Kentucky vs. Cincinati", "Arkansas vs. Hampton", "Butler vs. Notre Dame", "Arkansas vs. Oregon", "Arkansas vs. Notre Dame", "Buffalo vs. Northeastern", "Arkansas vs. Buffalo", "Cincinati vs. Purdue", "Harvard vs. Oregon", "Kentucky vs. Harvard", "Northeastern vs. Notre Dame", "Cincinati vs. Wisconsin", "Wisconsin vs. Kentucky", "Northeastern vs. Purdue", "Wisconsin vs. Wisconsin", "Oregon vs. Kentucky", "Notre Dame vs. Butler", "Harvard vs. Notre Dame", "Kentucky vs. Notre Dame", "Kentucky vs. Purdue", "Buffalo vs. Arkansas", "Cincinati vs. Northeastern", "Wisconsin vs. Northeastern", "Buffalo vs. Buffalo", "Wisconsin vs. Buffalo", "Arkansas vs. Kentucky", "Cincinati vs. Buffalo", "Hampton vs. Harvard", "Harvard vs. Texas", "Purdue vs. Cincinati", "Purdue vs. Northeastern", "Arkansas vs. Texas", "Texas vs. Hampton", "Oregon vs. Purdue", "Notre Dame vs. Hampton", "Northeastern vs. Wisconsin", "Kentucky vs. Oregon", "Harvard vs. Buffalo", "Purdue vs. Buffalo", "West Virginia vs. West Virginia", "Kentucky vs. Northeastern", "Wisconsin vs. Harvard", "West Virginia vs. Wisconsin", "Harvard vs. West Virginia", "Northeastern vs. Oregon", "Buffalo vs. Butler", "Oregon vs. Buffalo", "Hampton vs. Purdue", "Buffalo vs. Kentucky", "Notre Dame vs. West Virginia", "Oregon vs. Cincinati", "Notre Dame vs. Kentucky", "Kentucky vs. Kentucky", "Harvard vs. Arkansas", "Texas vs. Harvard", "Harvard vs. Kentucky", "Arkansas vs. Purdue", "Hampton vs. Texas", "Butler vs. Buffalo", "Buffalo vs. Wisconsin", "Texas vs. Purdue", "Hampton vs. Oregon", "West Virginia vs. Harvard", "Oregon vs. Hampton", "Cincinati vs. Harvard", "Hampton vs. Kentucky", "Wisconsin vs. Oregon", "Harvard vs. Harvard", "West Virginia vs. Purdue", "Kentucky vs. West Virginia", "Butler vs. Northeastern", "Wisconsin vs. Notre Dame", "Buffalo vs. Cincinati", "Notre Dame vs. Cincinati", "Harvard vs. Butler", "Northeastern vs. Buffalo", "Buffalo vs. Harvard", "Butler vs. Harvard", "Kentucky vs. Wisconsin", "Buffalo vs. Oregon", "Harvard vs. Purdue", "Buffalo vs. Purdue", "West Virginia vs. Oregon", "Cincinati vs. Arkansas", "Cincinati vs. Cincinati", "Purdue vs. Kentucky", "West Virginia vs. Hampton", "West Virginia vs. Kentucky", "Oregon vs. Arkansas", "Butler vs. Arkansas", "Oregon vs. Wisconsin", "Wisconsin vs. Hampton", "Oregon vs. Oregon", "Texas vs. Texas", "Butler vs. Cincinati", "Notre Dame vs. Texas", "Notre Dame vs. Harvard", "Oregon vs. Notre Dame", "Butler vs. Kentucky", "Texas vs. Northeastern"
 };
@@ -21,45 +19,45 @@ public class main {
 		
 		// fill lists with nodes
 		for (int i = 0; i < rest.length; i++) {
-			generated_list1.add(new List_node(rest[i], i, 0));
-			generated_list2.add(new List_node(rest[i], i, 0));
-			generated_list3.add(new List_node(rest[i], i, 0));
 			generated_list.add(new List_node(rest[i], i, 0));
+
 		}// end for
 		// create the classes 
-		organize_list original = new organize_list(generated_list);
-		organize_list mtf = new organize_list(generated_list1);
-		organize_list count = new organize_list(generated_list2);
-		organize_list transpose = new organize_list(generated_list3);
+		organize_list algs = new organize_list(generated_list);
 
-		System.out.println("Original list:");
-		original.print_list(3);
-		original.print_list(4);
+
+		System.out.println("Linear:");
+		for(int i = 0; i < rest_queries.length; i++){
+			algs.linear(rest_queries[i]);
+		}
+		//algs.print_list(1);
+		algs.print_list(8);
+		algs.print_list(12);
 
 		System.out.println("\n\nMOVE TO FRONT:");
 		for(int i = 0; i < rest_queries.length; i++){
-			mtf.mtf(rest_queries[i]);
+			algs.mtf(rest_queries[i]);
 		}
-		mtf.print_list(3);
-		mtf.print_list(7);
-		mtf.print_list(11);
+		//algs.print_list(2);
+		algs.print_list(5);
+		algs.print_list(10);
 
 		System.out.println("\n\nTRANSPOSE:");
 		for(int i = 0; i < rest_queries.length; i++){
-			transpose.transpose(rest_queries[i]);
+			algs.transpose(rest_queries[i]);
 		}
-		transpose.print_list(3);
-		transpose.print_list(8);
-		transpose.print_list(10);
+		//algs.print_list(3);
+		algs.print_list(6);
+		algs.print_list(9);
 
 		System.out
 				.println("\n\nCOUNT:");
 		for(int i = 0; i < rest_queries.length; i++){
-			count.count(rest_queries[i]);
+			algs.count(rest_queries[i]);
 		}
-		count.print_list(3);
-		count.print_list(9);
-		count.print_list(12);
+		//algs.print_list(4);
+		algs.print_list(7);
+		algs.print_list(11);
 
 	}// end main
 
