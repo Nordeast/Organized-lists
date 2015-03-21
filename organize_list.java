@@ -53,7 +53,7 @@ public class organize_list extends ArrayList<List_node> {
 		List_node current = null;
 		Linear_queries = 0;
 		for (int i = 0; i < linear_list.size(); i++) {// find the element in the
-														// list
+			// list
 			Linear_queries++; // incr the query count
 			if (linear_list.get(i).get_value() == value) {
 				index = i; // set values of the found node
@@ -77,7 +77,7 @@ public class organize_list extends ArrayList<List_node> {
 		int index = -1;
 		List_node current = null;
 		for (int i = 0; i < MTF_list.size(); i++) {// find the element in the
-													// list
+			// list
 			MTF_queries++; // incr the query count
 			if (MTF_list.get(i).get_value() == value) {
 				index = i; // set values of the found node
@@ -107,7 +107,7 @@ public class organize_list extends ArrayList<List_node> {
 		List_node current = null;
 
 		for (int i = 0; i < Transpose_list.size(); i++) {// find the element in
-															// the list
+			// the list
 			Transpose_queries++;// incr the query count
 			if (Transpose_list.get(i).get_value() == value) {
 				index = i;// set values of the found node
@@ -125,7 +125,7 @@ public class organize_list extends ArrayList<List_node> {
 
 			Transpose_list.remove(current); // remove the node
 			Transpose_list.add(index - 1, current);// place it up one index in
-													// the list
+			// the list
 
 		}// end if
 		transpose.add(Transpose_queries); // add look ups to the list
@@ -139,8 +139,10 @@ public class organize_list extends ArrayList<List_node> {
 		int index = -1;
 		Count_queries = 0;
 		Count_total_access++;// incr the total access count
-		for (int i = 0; i < Count_list.size(); i++) {// find the element in the
-														// list
+		
+		// find the element in the list
+		for (int i = 0; i < Count_list.size(); i++) {
+		
 			Count_queries++;// incr the query count
 			if (Count_list.get(i).get_value() == value) {
 				Count_list.get(i).incr_count();// increase count by one
@@ -169,7 +171,42 @@ public class organize_list extends ArrayList<List_node> {
 			Count_list.set(j, x);
 		}
 	}
+	
+	//Move half-way to front Algorithm
+	public void mtf_2(int value){
+		// if the value is in the list, and it has been accessed
+		//then move that node to the front of the list
+		MTF_queries = 0;
+		int index = -1;
+		List_node current = null;
+		
+		// find the element in the list
+		for (int i = 0; i < MTF_list.size(); i++) {
+			MTF_queries++; // incr the query count
+			if (MTF_list.get(i).get_value() == value) {
+				index = i; // set values of the found node
+				current = MTF_list.get(i);
 
+				MTF_list.get(i).count++;//increment the count
+				break;
+			}
+		}
+
+		if (index == -1) {// cannot find the node
+			System.out.printf("Cannot find value: %d", value);
+
+		}
+		MTF.add(MTF_queries); // add look ups to the list
+		MTF_total_access++;// incr the total access count
+
+		//move element half way from current position to the front of the list
+			MTF_list.remove(index); // remove the node
+			MTF_list.add(index/2, current);// place it at the head of the list
+
+		current.count++;//increment count
+
+
+	}
 	public void print_list(int flag) {
 		double average = 0.0;
 		int mode = 0;
@@ -191,13 +228,13 @@ public class organize_list extends ArrayList<List_node> {
 		// 14 - print lookups per query list transpose
 		// 15 - print lookups per query list count
 		// 16 - print lookups per query list linear
-		
+
 		switch (flag) {
 
 		case 1:
 
 			for (int i = 0; i < linear_list.size(); i++) {// iterate through the
-															// list
+				// list
 
 				if (i % 6 == 0) {
 					System.out.println();
@@ -212,7 +249,7 @@ public class organize_list extends ArrayList<List_node> {
 		case 2:
 
 			for (int i = 0; i < MTF_list.size(); i++) {// iterate through the
-														// list
+				// list
 
 				if (i % 6 == 0) {
 					System.out.println();
@@ -226,7 +263,7 @@ public class organize_list extends ArrayList<List_node> {
 		case 3:
 
 			for (int i = 0; i < Transpose_list.size(); i++) {// iterate through
-																// the list
+				// the list
 
 				if (i % 6 == 0) {
 					System.out.println();
@@ -240,7 +277,7 @@ public class organize_list extends ArrayList<List_node> {
 		case 4:
 
 			for (int i = 0; i < Count_list.size(); i++) {// iterate through the
-															// list
+				// list
 
 				if (i % 6 == 0) {
 					System.out.println();
@@ -360,9 +397,9 @@ public class organize_list extends ArrayList<List_node> {
 		}
 		System.out.println();
 		average = (double) total_queries / access;// average
-													// number
-													// of
-													// queries
+		// number
+		// of
+		// queries
 		return average;
 	}// end list_average
 
