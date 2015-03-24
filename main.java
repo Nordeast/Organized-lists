@@ -8,6 +8,28 @@ public class main {
 	// main will demonstrate each of the ways of organizing the lists
 	// will need to add a forth organization soon...
 
+	// print function flags
+	// 1 - Print linear list
+	// 2 - Print MTF list
+	// 3 - Print Transpose list
+	// 4 - Print Count list
+	// 5 - Print MTF_2 list
+	// 6 - print average MTF
+	// 7 - print average transpose
+	// 8 - print average count
+	// 9 - print average linear
+	// 10 - print average MTF_2
+	// 11 - print mode transpose
+	// 12 - print mode MTF
+	// 13 - print mode Count
+	// 14 - print linear mode
+	// 15 - print mode MTF_2
+	// 16 - print lookups per query list MTF
+	// 17 - print lookups per query list transpose
+	// 18 - print lookups per query list count
+	// 19 - print lookups per query list linear
+	// 20 - print lookups per query list MTF_2 
+	
 	public static void main(String[] args) {
 		ArrayList<List_node> generated_list = new ArrayList<List_node>();
 
@@ -31,41 +53,40 @@ public class main {
 			algs.linear(rest_queries[i]);
 		}
 		//algs.print_list(1);
-		algs.print_list(8);
-		algs.print_list(12);
+		algs.print_list(9);
+		algs.print_list(14);
 
 		System.out.println("\n\nMOVE TO FRONT:");
 		for(int i = 0; i < rest_queries.length; i++){
 			algs.mtf(rest_queries[i]);
 		}
 		//algs.print_list(2);
-		algs.print_list(5);
-		algs.print_list(10);
+		algs.print_list(6);
+		algs.print_list(12);
 
 		System.out.println("\n\nTRANSPOSE:");
 		for(int i = 0; i < rest_queries.length; i++){
 			algs.transpose(rest_queries[i]);
 		}
 		//algs.print_list(3);
-		algs.print_list(6);
-		algs.print_list(9);
+		algs.print_list(7);
+		algs.print_list(11);
 
 		System.out.println("\n\nCOUNT:");
 		for(int i = 0; i < rest_queries.length; i++){
 			algs.count(rest_queries[i]);
 		}
 		//algs.print_list(4);
-		algs.print_list(7);
-		algs.print_list(11);
+		algs.print_list(8);
+		algs.print_list(13);
 
 		System.out.println("\n\nMOVE HALF WAY TO FRONT");
 		for(int i = 0; i < rest_queries.length; i++){
 			algs.mtf_2(rest_queries[i]);
 		}
-
 		//algs.print_list(2);
-		algs.print_list(5);
 		algs.print_list(10);
+		algs.print_list(15);
 
 
 	}// end main
