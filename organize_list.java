@@ -14,9 +14,10 @@ public class organize_list extends ArrayList<List_node> {
 	private ArrayList<List_node> Transpose_list;
 	private ArrayList<List_node> Count_list;
 	private ArrayList<List_node> MTF_list_2;
-	
+
 	private int MTF_queries = 0;
-	private int MTF_total_access = 0;// total number of times mtf has been queried
+	private int MTF_total_access = 0;// total number of times mtf has been
+										// queried
 	private int Transpose_queries = 0;
 	private int Transpose_total_access = 0;
 	private int Count_queries = 0;
@@ -31,9 +32,6 @@ public class organize_list extends ArrayList<List_node> {
 	private ArrayList<Integer> count = new ArrayList<Integer>();
 	private ArrayList<Integer> linear = new ArrayList<Integer>();
 	private ArrayList<Integer> MTF_2 = new ArrayList<Integer>();
-	
-
-
 
 	public organize_list(ArrayList<List_node> l) {
 		// must be constructed with a already filled list.
@@ -147,10 +145,10 @@ public class organize_list extends ArrayList<List_node> {
 		int index = -1;
 		Count_queries = 0;
 		Count_total_access++;// incr the total access count
-		
+
 		// find the element in the list
 		for (int i = 0; i < Count_list.size(); i++) {
-		
+
 			Count_queries++;// incr the query count
 			if (Count_list.get(i).get_value() == value) {
 				Count_list.get(i).incr_count();// increase count by one
@@ -179,15 +177,15 @@ public class organize_list extends ArrayList<List_node> {
 			Count_list.set(j, x);
 		}
 	}
-	
-	//Move half-way to front Algorithm
-	public void mtf_2(int value){
+
+	// Move half-way to front Algorithm
+	public void mtf_2(int value) {
 		// if the value is in the list, and it has been accessed
-		//then move that node to the front of the list
+		// then move that node to the front of the list
 		MTF_queries_2 = 0;
 		int index = -1;
 		List_node current = null;
-		
+
 		// find the element in the list
 		for (int i = 0; i < MTF_list_2.size(); i++) {
 			MTF_queries_2++; // incr the query count
@@ -195,7 +193,7 @@ public class organize_list extends ArrayList<List_node> {
 				index = i; // set values of the found node
 				current = MTF_list_2.get(i);
 
-				MTF_list_2.get(i).count++;//increment the count
+				MTF_list_2.get(i).count++;// increment the count
 				break;
 			}
 		}
@@ -207,14 +205,14 @@ public class organize_list extends ArrayList<List_node> {
 		MTF_2.add(MTF_queries_2); // add look ups to the list
 		MTF_total_access_2++;// incr the total access count
 
-		//move element half way from current position to the front of the list
-			MTF_list_2.remove(index); // remove the node
-			MTF_list_2.add(index/2, current);// place it at the head of the list
+		// move element half way from current position to the front of the list
+		MTF_list_2.remove(index); // remove the node
+		MTF_list_2.add(index / 2, current);// place it at the head of the list
 
-		current.count++;//increment count
-
+		current.count++;// increment count
 
 	}
+
 	public void print_list(int flag) {
 		double average = 0.0;
 		int mode = 0;
@@ -240,7 +238,7 @@ public class organize_list extends ArrayList<List_node> {
 		// 18 - print lookups per query list count
 		// 19 - print lookups per query list linear
 		// 20 - print lookups per query list MTF_2
-		
+
 		switch (flag) {
 
 		case 1:
@@ -317,7 +315,6 @@ public class organize_list extends ArrayList<List_node> {
 		case 6:
 			// print average number of queries MTF
 			average = list_average(MTF, MTF_total_access);
-			System.out.printf("Average node accesses\n");
 			System.out.printf("average number of node accesses MTF: %f\n",
 					average);
 			break;
@@ -325,28 +322,24 @@ public class organize_list extends ArrayList<List_node> {
 		case 7:
 			// print average number of queries transpose
 			average = list_average(transpose, Transpose_total_access);
-			System.out.printf("Average node accesses\n");
 			System.out.printf(
 					"average number of node accesses transpose: %f\n", average);
 			break;
 		case 8:
 			// print average number of queries Count
 			average = list_average(count, Count_total_access);
-			System.out.printf("Average node accesses\n");
 			System.out.printf("average number of node accesses Count: %f\n",
 					average);
 			break;
 		case 9:
 			// print average number of queries for linear
 			average = list_average(linear, Linear_total_access);
-			System.out.printf("Average node accesses\n");
 			System.out.printf("average number of node accesses linear: %f\n",
 					average);
 			break;
 		case 10:
 			// print average number of queries MTF
 			average = list_average(MTF_2, MTF_total_access_2);
-			System.out.printf("Average node accesses\n");
 			System.out.printf("average number of node accesses MTF: %f\n",
 					average);
 			break;
@@ -394,7 +387,7 @@ public class organize_list extends ArrayList<List_node> {
 			break;
 		case 20:
 			list_look_up_list(MTF_2);
-			break;	
+			break;
 		default:
 
 			System.out.println("Usage list_print(FLAG)");
