@@ -1,5 +1,11 @@
 // Written by Allen Rand
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class main {
@@ -32,6 +38,52 @@ public class main {
 
 	public static void main(String[] args) {
 		ArrayList<List_node> generated_list = new ArrayList<List_node>();
+		// change this to false if you want to use the hard coded data sets
+		if (true) {
+			if (args.length < 2) {
+				System.out.println("usage file_names file_number of queries");
+				System.exit(0);
+			}
+
+		}
+		// names for the files to be read in from the command line.
+		// replace the names fqueries and fnames below if you want to 
+		// use the files that are read in.
+		String[] fnames = null;
+		int[] fqueries = null;
+		
+		try {
+			int x = 0;
+			BufferedReader in = new BufferedReader(new FileReader(
+					args[1]));
+			String str;
+			str = in.readLine();
+			
+			while ((str = in.readLine()) != null) {
+				fnames = str.split(",");
+			}
+			in.close();
+			
+			
+			BufferedReader in2 = new BufferedReader(new FileReader(
+					args[2]));
+			
+			String str2;
+			str = in.readLine();
+			String[] ar;
+			x = 0;
+			
+			while ((str2 = in.readLine()) != null) {
+				ar = str2.split(",");
+				for(x = 0; x < ar.length; x++ )
+				fqueries[x] = Integer.parseInt(ar[x]);
+				
+			}
+			in2.close();
+			
+		} catch (IOException e) {
+			System.out.println("File Read Error");
+		}
 
 		String[] games = { "Cincinati vs. Hampton", "Harvard vs. Wisconsin",
 				"Oregon vs. Butler", "West Virginia vs. Texas",
@@ -185,20 +237,21 @@ public class main {
 				12, 14, 10, 13, 13, 12, 11, 11, 14, 14, 12, 14, 11, 14, 14, 12,
 				14, 10, 13, 13, 14, 11, 11, 14, 14, 14, 12, 10, 13, 13, 14, 11 };
 
-		int[] rest_queries = { 2, 5, 12, 14, 3, 7, 9, 0, 0, 0, 0, 11, 0, 12,
-				0, 0, 13, 0, 0, 1, 3, 0, 0, 1, 0, 3, 0, 0, 0, 1, 0, 0, 5, 0, 8,
-				0, 0, 0, 12, 0, 6, 4, 1, 0, 0, 0, 8, 8, 5, 0, 7, 11, 13, 13, 0,
-				4, 10, 0, 11, 12, 11, 8, 8, 10, 4, 0, 1, 3, 12, 8, 2, 5, 9,
-				14, 0, 9, 4, 6, 3, 3, 6, 11, 14, 1, 2, 0, 4, 7, 8, 2, 9, 13,
-				12, 1, 6, 4, 7, 1, 13, 0, 5, 7, 2, 10 };
-		
-		
+		int[] rest_queries = { 2, 5, 12, 14, 3, 7, 9, 0, 0, 0, 0, 11, 0, 12, 0,
+				0, 13, 0, 0, 1, 3, 0, 0, 1, 0, 3, 0, 0, 0, 1, 0, 0, 5, 0, 8, 0,
+				0, 0, 12, 0, 6, 4, 1, 0, 0, 0, 8, 8, 5, 0, 7, 11, 13, 13, 0, 4,
+				10, 0, 11, 12, 11, 8, 8, 10, 4, 0, 1, 3, 12, 8, 2, 5, 9, 14, 0,
+				9, 4, 6, 3, 3, 6, 11, 14, 1, 2, 0, 4, 7, 8, 2, 9, 13, 12, 1, 6,
+				4, 7, 1, 13, 0, 5, 7, 2, 10 };
+
 		// set the data sets here to display them
+		// set current and and current in to fname
+		// and fqueries respectively to use command line input
 		String[] current = movie;
 		int[] current_int = movie_queries;
-		
+
 		// fill list with nodes
-		for (int i = 0; i < current.length ; i++) {
+		for (int i = 0; i < current.length; i++) {
 			generated_list.add(new List_node(current[i], i, 0));
 
 		}// end for
@@ -210,40 +263,40 @@ public class main {
 			algs.linear(current_int[i]);
 		}
 		algs.print_list(19);
-		//algs.print_list(9);
-		//algs.print_list(14);
+		// algs.print_list(9);
+		// algs.print_list(14);
 
 		System.out.println("\n\nMOVE TO FRONT:");
 		for (int i = 0; i < current_int.length; i++) {
 			algs.mtf(current_int[i]);
 		}
 		algs.print_list(16);
-		//algs.print_list(6);
-		//algs.print_list(12);
+		// algs.print_list(6);
+		// algs.print_list(12);
 
 		System.out.println("\n\nTRANSPOSE:");
 		for (int i = 0; i < current_int.length; i++) {
 			algs.transpose(current_int[i]);
 		}
 		algs.print_list(17);
-		//algs.print_list(7);
-		//algs.print_list(11);
+		// algs.print_list(7);
+		// algs.print_list(11);
 
 		System.out.println("\n\nCOUNT:");
 		for (int i = 0; i < current_int.length; i++) {
 			algs.count(current_int[i]);
 		}
 		algs.print_list(18);
-		//algs.print_list(8);
-		//algs.print_list(13);
+		// algs.print_list(8);
+		// algs.print_list(13);
 
 		System.out.println("\n\nMOVE HALF WAY TO FRONT");
 		for (int i = 0; i < current_int.length; i++) {
 			algs.mtf_2(current_int[i]);
 		}
 		algs.print_list(20);
-		//algs.print_list(10);
-		//algs.print_list(15);
+		// algs.print_list(10);
+		// algs.print_list(15);
 
 	}// end main
 }// end class
